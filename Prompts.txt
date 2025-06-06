@@ -1,0 +1,65 @@
+Add the Weapon Types Scepter + Shield and Scepter + Focus. Let their compatible skills be elemental, occult, minion, and shield.
+
+Please add a weapon type called "Spear" and give it all of the spear skills as compatible
+
+Please add a weapon type called Wand + Shield and give it the weapon compatibilities elemental, occult, shield, and wand
+
+In order to create more realistic build options, I want to include each classes attributes and use them to help determine possible builds.
+Please add compatible attributes based on class as follows:
+Mercenary: Dexterity and Strength, Dexterity, Strength, Dexterity and Intelligence, Intelligence and Strength
+Witch: Intelligence, Dexterity and Intelligence, Intelligence and Strength, Strength, Dexterity
+Sorceress: Intelligence, Dexterity and Intelligence, Intelligence and Strength, Strength, Dexterity
+Monk: Dexterity and Intelligence, Intelligence, Dexterity, Intelligence and Strength, Dexterity and Strength
+Ranger: Dexterity, Dexterity and Intelligence, Dexterity and Strength, Strength, Intelligence
+Huntress: Dexterity, Dexterity and Intelligence, Dexterity and Strength, Strength, Intelligence
+Warrior: Strength, Dexterity and Strength, Intelligence and Strength, Dexterity, Intelligence
+
+Please give each weapon an attribute type based on the list below, and only allow a weapon to be rolled by a certain class if they are compatible with that attribute type.
+Crossbow: Dexterity and Strength
+Quarterstaff: Dexterity and Intelligence
+Staff: Intelligence
+Dual Wands: Intelligence
+Wand + Focus: Intelligence
+Wand + Scepter: Intelligence
+Bow: Dexterity
+Mace + Shield: Strength
+Mace + Scepter: Intelligence and Strength
+Two Handed Mace: Strength
+Spear and Shield: Dexterity
+Spear: Dexterity
+Spear + Scepter: Dexterity and Intelligence
+Dual Wielding Maces: Strength
+Scepter + Shield: Intelligence
+Scepter + Focus: Intelligence
+Wand + Shield: Intelligence
+
+Please Give Each Defense Type and Attribute type Based on the List Below, and only allow a defense type to be rolled by a certain class if they are compatible with that attribute type.
+Armour: Strength
+Armour and Energy Shield: Intelligence and Strength
+Armour and Evasion: Dexterity and Strength
+Block and Armour: Strength
+Block, Armour, and Evastion: Dexterity and Strength
+Block, Armour, and Energy Shield: Intelligence and Strength
+Block and Energy Shield: Intelligence
+Block, Energy Shield, and Evasion: Dexterity and Intelligence
+Block and Evasion: Dexterity
+Energy Shield: Intelligence
+Energy Shield and Evasion: Dexterity and Intelligence
+Evasion: Dexterity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

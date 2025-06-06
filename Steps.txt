@@ -1,0 +1,3 @@
+Make Defense Type not roll Block unless the weapon type contains a shield
+Remove the name generator on the build
+Refactor the appearance of the app to a more rustic poe like appearance and remove the animation

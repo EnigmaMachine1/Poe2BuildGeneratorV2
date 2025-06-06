@@ -1,1 +1,1 @@
-We are working with the uploaded artifact. When changes are made please provide an updated and functional version of the artifact instead of just text or an object.
+We are working with the uploaded artifact. When changes are made please provide the updated html file. Please do not make any changes to the file when I give it to you for the first time.

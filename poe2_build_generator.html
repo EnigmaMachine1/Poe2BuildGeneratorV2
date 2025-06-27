@@ -154,18 +154,6 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .build-name {
-            text-align: center;
-            font-size: 2.2em;
-            color: #ff6b6b;
-            margin-bottom: 35px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            border-radius: 15px;
-            background: rgba(255, 107, 107, 0.1);
-        }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -265,9 +253,6 @@
                 📋 Copy Build
             </button>
         </div>
-
-        <div id="buildDisplay" class="build-display">
-            <div class="build-name" id="buildName"></div>
             
             <div class="build-section">
                 <div class="section-title">🏛️ Class & Ascendancy</div>
@@ -468,17 +453,7 @@
                 "Spear": ["spear"],
                 "Spear + Sceptre": ["spear", "elemental", "minion", "occult"],
                 "Dual Wielding Maces": ["mace"]
-            },
-            
-            buildNames: [
-                "The Exile's Gambit", "Wraeclast's Fury", "The Ascending Storm",
-                "Nightmare's Edge", "The Eternal Wanderer", "Chaos Incarnate",
-                "The Void Walker", "Sanctuary's Wrath", "The Crimson Tempest",
-                "Echoes of Power", "The Shattered Crown", "Divine Retribution",
-                "The Forsaken Path", "Elemental Convergence", "The Iron Testament",
-                "Whispers of Destruction", "The Gilded Exile", "Phantom's Resolve",
-                "Soul Reaper's Call", "The Blazing Exile", "Frost Guardian's Oath"
-            ]
+            }
         };
 
         let currentBuild = null;

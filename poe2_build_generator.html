@@ -542,10 +542,7 @@
                 skillsCopy.splice(skillsCopy.indexOf(skill), 1);
             }
             
-            const buildName = getRandomElement(buildData.buildNames);
-            
             currentBuild = {
-                name: buildName,
                 class: selectedClass.name,
                 ascendancy: selectedAscendancy,
                 weapon: selectedWeapon,
@@ -553,7 +550,6 @@
                 defense: selectedDefenseType
             };
             
-            document.getElementById('buildName').textContent = buildName;
             document.getElementById('classInfo').innerHTML = 
                 `<span class="highlight">${selectedClass.name}</span> → <span class="highlight">${selectedAscendancy}</span>`;
             document.getElementById('weaponInfo').innerHTML = 

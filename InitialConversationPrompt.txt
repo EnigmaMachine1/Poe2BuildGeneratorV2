@@ -1,1 +1,0 @@
-We are working with the uploaded artifact. When changes are made please provide an updated and functional version of the artifact instead of just text or an object.

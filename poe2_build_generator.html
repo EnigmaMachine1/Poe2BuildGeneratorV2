@@ -21,7 +21,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated background particles */
+        /* Static background particles */
         .bg-particles {
             position: fixed;
             top: 0;
@@ -38,24 +38,6 @@
             height: 2px;
             background: rgba(255, 215, 0, 0.3);
             border-radius: 50%;
-            animation: float 6s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-10vh) rotate(360deg);
-                opacity: 0;
-            }
         }
 
         .container {
@@ -70,41 +52,12 @@
             position: relative;
         }
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffd700, #ff6b6b, #4ecdc4, #ffd700);
-            border-radius: 20px;
-            z-index: -1;
-            opacity: 0.3;
-            animation: borderGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes borderGlow {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.6; }
-        }
-
         h1 {
             text-align: center;
             color: #ffd700;
             font-size: 2.8em;
             margin-bottom: 30px;
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-            background: linear-gradient(45deg, #ffd700, #ffed4e, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: titlePulse 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes titlePulse {
-            0% { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); }
-            100% { text-shadow: 3px 3px 12px rgba(255, 215, 0, 0.5); }
         }
 
         .controls {
@@ -131,25 +84,25 @@
         }
 
         .generate-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background: #ff6b6b;
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
         }
 
         .export-btn {
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            background: #4ecdc4;
             box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
         }
 
         .generate-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(255, 107, 107, 0.5);
-            background: linear-gradient(45deg, #ff5252, #d63031);
+            background: #ff5252;
         }
 
         .export-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(78, 205, 196, 0.5);
-            background: linear-gradient(45deg, #26d0ce, #2d5a87);
+            background: #26d0ce;
         }
 
         .generate-btn:active, .export-btn:active {
@@ -158,18 +111,6 @@
 
         .build-display {
             display: none;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .build-section {
@@ -181,21 +122,6 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        .build-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .build-section:hover::before {
-            left: 100%;
         }
 
         .build-section:hover {
@@ -226,18 +152,6 @@
             color: #4ecdc4;
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .build-name {
-            text-align: center;
-            font-size: 2.2em;
-            color: #ff6b6b;
-            margin-bottom: 35px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            border: 2px solid rgba(255, 107, 107, 0.3);
-            border-radius: 15px;
-            background: rgba(255, 107, 107, 0.1);
         }
 
         .stats-grid {
@@ -289,7 +203,7 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            background: #4ecdc4;
             color: white;
             padding: 15px 25px;
             border-radius: 10px;
@@ -339,9 +253,6 @@
                 📋 Copy Build
             </button>
         </div>
-
-        <div id="buildDisplay" class="build-display">
-            <div class="build-name" id="buildName"></div>
             
             <div class="build-section">
                 <div class="section-title">🏛️ Class & Ascendancy</div>
@@ -377,20 +288,77 @@
     <script>
         const buildData = {
             classes: [
-                { name: "Witch", ascendancies: ["Infernalist", "Blood Mage", "Lich"] },
-                { name: "Sorceress", ascendancies: ["Stormweaver", "Chronomancer"] },
-                { name: "Monk", ascendancies: ["Invoker", "Acolyte of Chayula"] },
-                { name: "Ranger", ascendancies: ["Deadeye", "Pathfinder"] },
-                { name: "Mercenary", ascendancies: ["Witchhunter", "Gemling Legionnaire", "Tactician"] },
-                { name: "Warrior", ascendancies: ["Titan", "Warbringer", "Smith of Kitava"] },
-                { name: "Huntress", ascendancies: ["Amazon", "Ritualist"] }
+                { 
+                    name: "Witch", 
+                    ascendancies: ["Infernalist", "Blood Mage", "Lich"],
+                    attributes: ["Intelligence", "Dexterity and Intelligence", "Intelligence and Strength", "Strength", "Dexterity"]
+                },
+                { 
+                    name: "Sorceress", 
+                    ascendancies: ["Stormweaver", "Chronomancer"],
+                    attributes: ["Intelligence", "Dexterity and Intelligence", "Intelligence and Strength", "Strength", "Dexterity"]
+                },
+                { 
+                    name: "Monk", 
+                    ascendancies: ["Invoker", "Acolyte of Chayula"],
+                    attributes: ["Dexterity and Intelligence", "Intelligence", "Dexterity", "Intelligence and Strength", "Dexterity and Strength"]
+                },
+                { 
+                    name: "Ranger", 
+                    ascendancies: ["Deadeye", "Pathfinder"],
+                    attributes: ["Dexterity", "Dexterity and Intelligence", "Dexterity and Strength", "Strength", "Intelligence"]
+                },
+                { 
+                    name: "Mercenary", 
+                    ascendancies: ["Witchhunter", "Gemling Legionnaire", "Tactician"],
+                    attributes: ["Dexterity and Strength", "Dexterity", "Strength", "Dexterity and Intelligence", "Intelligence and Strength"]
+                },
+                { 
+                    name: "Warrior", 
+                    ascendancies: ["Titan", "Warbringer", "Smith of Kitava"],
+                    attributes: ["Strength", "Dexterity and Strength", "Intelligence and Strength", "Dexterity", "Intelligence"]
+                },
+                { 
+                    name: "Huntress", 
+                    ascendancies: ["Amazon", "Ritualist"],
+                    attributes: ["Dexterity", "Dexterity and Intelligence", "Dexterity and Strength", "Strength", "Intelligence"]
+                }
             ],
             
-            weapons: [
-                "Staff", "Wand + Focus", "Dual Wands", "Wand + Sceptre", "Scepter + Shield", "Scepter + Focus", "Bow", "Crossbow", 
-                "Quarterstaff", "Mace + Shield", "Mace + Sceptre", "Two-Handed Mace", 
-                "Spear + Shield", "Spear + Sceptre", "Dual Wielding Maces"
-            ],
+            weapons: {
+                "Staff": { attributes: ["Intelligence"] },
+                "Wand + Focus": { attributes: ["Intelligence"] },
+                "Dual Wands": { attributes: ["Intelligence"] },
+                "Wand + Sceptre": { attributes: ["Intelligence"] },
+                "Wand + Shield": { attributes: ["Intelligence"] },
+                "Scepter + Shield": { attributes: ["Intelligence"] },
+                "Scepter + Focus": { attributes: ["Intelligence"] },
+                "Bow": { attributes: ["Dexterity"] },
+                "Crossbow": { attributes: ["Dexterity and Strength"] },
+                "Quarterstaff": { attributes: ["Dexterity and Intelligence"] },
+                "Mace + Shield": { attributes: ["Strength"] },
+                "Mace + Sceptre": { attributes: ["Intelligence and Strength"] },
+                "Two-Handed Mace": { attributes: ["Strength"] },
+                "Spear + Shield": { attributes: ["Dexterity"] },
+                "Spear": { attributes: ["Dexterity"] },
+                "Spear + Sceptre": { attributes: ["Dexterity and Intelligence"] },
+                "Dual Wielding Maces": { attributes: ["Strength"] }
+            },
+
+            defenseTypes: {
+                "Armour": { attributes: ["Strength"] },
+                "Armour and Energy Shield": { attributes: ["Intelligence and Strength"] },
+                "Armour and Evasion": { attributes: ["Dexterity and Strength"] },
+                "Block and Armour": { attributes: ["Strength"] },
+                "Block, Armour, and Evasion": { attributes: ["Dexterity and Strength"] },
+                "Block, Armour, and Energy Shield": { attributes: ["Intelligence and Strength"] },
+                "Block and Energy Shield": { attributes: ["Intelligence"] },
+                "Block, Energy Shield, and Evasion": { attributes: ["Dexterity and Intelligence"] },
+                "Block and Evasion": { attributes: ["Dexterity"] },
+                "Energy Shield": { attributes: ["Intelligence"] },
+                "Energy Shield and Evasion": { attributes: ["Dexterity and Intelligence"] },
+                "Evasion": { attributes: ["Dexterity"] }
+            },
             
             skills: {
                 elemental: [
@@ -472,6 +440,7 @@
                 "Wand + Focus": ["elemental", "occult"],
                 "Dual Wands": ["elemental", "occult"],
                 "Wand + Sceptre": ["elemental", "minion", "wand", "occult"],
+                "Wand + Shield": ["elemental", "minion", "wand", "occult", "shield"],
                 "Scepter + Shield": ["elemental", "occult", "minion", "shield"],
                 "Scepter + Focus": ["elemental", "occult", "minion"],
                 "Bow": ["bow"],
@@ -481,26 +450,10 @@
                 "Mace + Sceptre": ["mace", "elemental", "minion", "occult"],
                 "Two-Handed Mace": ["twohanded_mace", "mace"],
                 "Spear + Shield": ["spear", "shield"],
+                "Spear": ["spear"],
                 "Spear + Sceptre": ["spear", "elemental", "minion", "occult"],
                 "Dual Wielding Maces": ["mace"]
-            },
-            
-            defenses: [
-                "Armour", "Armour and Energy Shield", "Armour and Evasion",
-                "Block and Armour", "Block, Armour, and Evasion", "Block, Armour, and Energy Shield",
-                "Block and Energy Shield", "Block, Energy Shield, and Evasion", "Block and Evasion",
-                "Energy Shield", "Energy Shield and Evasion", "Evasion"
-            ],
-            
-            buildNames: [
-                "The Exile's Gambit", "Wraeclast's Fury", "The Ascending Storm",
-                "Nightmare's Edge", "The Eternal Wanderer", "Chaos Incarnate",
-                "The Void Walker", "Sanctuary's Wrath", "The Crimson Tempest",
-                "Echoes of Power", "The Shattered Crown", "Divine Retribution",
-                "The Forsaken Path", "Elemental Convergence", "The Iron Testament",
-                "Whispers of Destruction", "The Gilded Exile", "Phantom's Resolve",
-                "Soul Reaper's Call", "The Blazing Exile", "Frost Guardian's Oath"
-            ]
+            }
         };
 
         let currentBuild = null;
@@ -509,7 +462,17 @@
             return array[Math.floor(Math.random() * array.length)];
         }
 
+        function isWeaponCompatibleWithClass(selectedClass, weaponName) {
+            const weaponAttributes = buildData.weapons[weaponName].attributes;
+            const classAttributes = selectedClass.attributes;
+            return(classAttributes.includes(weaponAttributes[0]));
+        }
 
+        function isWeaponCompatibleWithDefenseType(selectedClass, defenseType) {
+            const defenseTypeAttributes = buildData.defenseTypes[defenseType].attributes;
+            const classAttributes = selectedClass.attributes;
+            return(classAttributes.includes(defenseTypeAttributes[0]));
+        }
 
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -518,8 +481,7 @@
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particle.style.top = Math.random() * 100 + '%';
                 particlesContainer.appendChild(particle);
             }
         }
@@ -536,7 +498,19 @@
         function generateBuild() {
             const selectedClass = getRandomElement(buildData.classes);
             const selectedAscendancy = getRandomElement(selectedClass.ascendancies);
-            const selectedWeapon = getRandomElement(buildData.weapons);
+
+            // Filter weapons based on class compatibility
+            const compatibleWeapons = Object.keys(buildData.weapons).filter(weaponName => 
+                isWeaponCompatibleWithClass(selectedClass, weaponName)
+            );
+
+            const compatibleDefenseTypes = Object.keys(buildData.defenseTypes).filter(defenseType => 
+                isWeaponCompatibleWithDefenseType(selectedClass, defenseType)
+            );
+            
+            const selectedWeapon = getRandomElement(compatibleWeapons);
+
+            const selectedDefenseType = getRandomElement(compatibleDefenseTypes);
             
             const compatibleCategories = buildData.weaponCompatibility[selectedWeapon];
             const compatibleSkills = [];
@@ -558,7 +532,7 @@
             }
             
             const uniqueSkills = [...new Set(compatibleSkills)];
-            const numSkills = Math.random() < 0.35 ? 2 : 1;
+            const numSkills = Math.random() < 0.50 ? 2 : 1;
             const selectedSkills = [];
             const skillsCopy = [...uniqueSkills];
             
@@ -568,26 +542,14 @@
                 skillsCopy.splice(skillsCopy.indexOf(skill), 1);
             }
             
-            let availableDefenses = buildData.defenses.filter(defense => {
-                if (defense.includes("Block")) {
-                    return selectedWeapon.includes("Shield");
-                }
-                return true;
-            });
-            
-            const selectedDefense = getRandomElement(availableDefenses);
-            const buildName = getRandomElement(buildData.buildNames);
-            
             currentBuild = {
-                name: buildName,
                 class: selectedClass.name,
                 ascendancy: selectedAscendancy,
                 weapon: selectedWeapon,
                 skills: selectedSkills,
-                defense: selectedDefense
+                defense: selectedDefenseType
             };
             
-            document.getElementById('buildName').textContent = buildName;
             document.getElementById('classInfo').innerHTML = 
                 `<span class="highlight">${selectedClass.name}</span> → <span class="highlight">${selectedAscendancy}</span>`;
             document.getElementById('weaponInfo').innerHTML = 
@@ -595,7 +557,7 @@
             document.getElementById('skillInfo').innerHTML = 
                 selectedSkills.map(skill => `<span class="highlight">${skill}</span>`).join(numSkills > 1 ? ' + ' : '');
             document.getElementById('defenseInfo').innerHTML = 
-                `<span class="highlight">${selectedDefense}</span>`;
+                `<span class="highlight">${selectedDefenseType}</span>`;
             
 
             
@@ -604,10 +566,6 @@
             
             buildDisplay.style.display = 'block';
             exportBtn.style.display = 'inline-block';
-            
-            buildDisplay.style.animation = 'none';
-            buildDisplay.offsetHeight;
-            buildDisplay.style.animation = 'fadeInUp 0.8s ease';
         }
 
         function exportBuild() {
@@ -617,7 +575,7 @@
             
 Class: ${currentBuild.class} → ${currentBuild.ascendancy}
 Weapon: ${currentBuild.weapon}
-Skills: ${currentBuild.skills.join(' + ')}
+Skills: ${currentBuild.skills}
 Defense: ${currentBuild.defense}
 
 Generated by PoE2 Random Build Generator`;

@@ -468,7 +468,10 @@
             return(classAttributes.includes(weaponAttributes[0]));
         }
 
-        function isWeaponCompatibleWithDefenseType(selectedClass, defenseType) {
+        function isWeaponCompatibleWithDefenseType(selectedClass, defenseType, selectedWeapon) {
+            if (defenseType.includes("Block") && !selectedWeapon.includes("Shield")) {
+                return false;
+            }
             const defenseTypeAttributes = buildData.defenseTypes[defenseType].attributes;
             const classAttributes = selectedClass.attributes;
             return(classAttributes.includes(defenseTypeAttributes[0]));
@@ -503,12 +506,14 @@
             const compatibleWeapons = Object.keys(buildData.weapons).filter(weaponName => 
                 isWeaponCompatibleWithClass(selectedClass, weaponName)
             );
-
-            const compatibleDefenseTypes = Object.keys(buildData.defenseTypes).filter(defenseType => 
-                isWeaponCompatibleWithDefenseType(selectedClass, defenseType)
-            );
             
             const selectedWeapon = getRandomElement(compatibleWeapons);
+
+            const compatibleDefenseTypes = Object.keys(buildData.defenseTypes).filter(defenseType => 
+                isWeaponCompatibleWithDefenseType(selectedClass, defenseType, selectedWeapon)
+            );
+
+            console.log("COMPATIBLE DEFENSE TYPES: ", compatibleDefenseTypes);
 
             const selectedDefenseType = getRandomElement(compatibleDefenseTypes);
             
@@ -559,12 +564,8 @@
             document.getElementById('defenseInfo').innerHTML = 
                 `<span class="highlight">${selectedDefenseType}</span>`;
             
-
-            
-            const buildDisplay = document.getElementById('buildDisplay');
             const exportBtn = document.getElementById('exportBtn');
             
-            buildDisplay.style.display = 'block';
             exportBtn.style.display = 'inline-block';
         }
 

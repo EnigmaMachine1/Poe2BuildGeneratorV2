@@ -513,8 +513,6 @@
                 isWeaponCompatibleWithDefenseType(selectedClass, defenseType, selectedWeapon)
             );
 
-            console.log("COMPATIBLE DEFENSE TYPES: ", compatibleDefenseTypes);
-
             const selectedDefenseType = getRandomElement(compatibleDefenseTypes);
             
             const compatibleCategories = buildData.weaponCompatibility[selectedWeapon];
